@@ -12,5 +12,8 @@
   "peerDependencies": {
     "react": "^16",
     "@gpn-design/uikit": "^1.0.1"
+  },
+  "dependencies": {
+    "@vega-ui/icons": "^0.0.1"
   }
 }

@@ -1,28 +1,34 @@
 import React from 'react';
-import { cn } from '@gpn-design/uikit/__internal__/src/utils/bem';
 import { Tabs as BaseTabs } from '@gpn-design/uikit/Tabs';
 import { IconArrowLeft, IconArrowRight } from '@vega-ui/icons';
+import { block } from 'bem-cn';
 
-import './styles.css';
+import './Tabs.css';
 
-type TabsProps = React.ComponentProps<typeof BaseTabs>;
+type BaseTabsComponent = typeof BaseTabs;
 
-const cnTabs = cn('VegaTabs');
+const cnTabs = block('VegaTabs');
 
-export const Tabs: React.FC<TabsProps> = (props) => {
+export const Tabs: BaseTabsComponent = (props) => {
+  const { size } = props;
+
   return (
-    <div className={cnTabs()}>
-      <button type="button" className={cnTabs('ScrollLeft')}>
-        <IconArrowLeft />
-      </button>
+    <div className={cnTabs({ size })}>
+      <div className={cnTabs('ScrollLeft')}>
+        <button type="button" className={cnTabs('ScrollButton')}>
+          <IconArrowLeft />
+        </button>
+      </div>
       <div className={cnTabs('Inner')}>
         <div className={cnTabs('InnerContent')}>
           <BaseTabs {...props} />
         </div>
       </div>
-      <button type="button" className={cnTabs('ScrollRight')}>
-        <IconArrowRight />
-      </button>
+      <div className={cnTabs('ScrollRight')}>
+        <button type="button" className={cnTabs('ScrollButton')}>
+          <IconArrowRight />
+        </button>
+      </div>
     </div>
   );
 };
