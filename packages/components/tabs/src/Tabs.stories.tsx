@@ -43,7 +43,7 @@ const items = [
   },
 ];
 
-function Stories({ size, view, onlyIcon, withIcon }) {
+function Stories({ size, view, onlyIcon, withIcon }): React.ReactElement {
   const [value, setValue] = useState<Item[] | null>([
     {
       name: 'Первый',
@@ -55,10 +55,10 @@ function Stories({ size, view, onlyIcon, withIcon }) {
     <Tabs<Item>
       items={items}
       value={value}
-      getItemKey={(item) => item.name}
-      getItemLabel={(item) => item.name}
+      getItemKey={(item): string => item.name}
+      getItemLabel={(item): string => item.name}
       getItemIcon={withIcon ? (item) => item.icon : null}
-      onChange={({ value }) => setValue(value)}
+      onChange={({ value }): void => setValue(value)}
       size={size}
       view={view}
       onlyIcon={onlyIcon}
@@ -66,7 +66,7 @@ function Stories({ size, view, onlyIcon, withIcon }) {
   );
 }
 
-const knobs = () => ({
+const knobs = (): Record<string, string | boolean> => ({
   size: select('size', ['s', 'm'], 'm'),
   view: select('view', ['bordered', 'clear'], 'bordered'),
   withIcon: boolean('withIcon', false),
