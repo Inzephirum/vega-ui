@@ -23,18 +23,27 @@ export const Tabs: BaseTabsComponent = (props) => {
     sliderRef: scroller,
   });
 
-  useEffect(() => {
+  const checkScroll = (): void => {
     const sc = scroller.current;
 
     if (!sc) {
       return;
     }
 
-    if (sc.scrollLeft > 0) {
-      console.log('df');
-      setState({ ...state, isHiddenLeftButton: false });
-    }
-  }, [scroll.left, scroll.hasSwiped, state]);
+    console.log(scroll);
+
+    setState({
+      ...state,
+      isHiddenLeftButton: scroll.scrollLeft === 0,
+      isHiddenRightButton:
+        scroll.currentRightPosition === scroll.containerWidth && scroll.containerWidth !== 0,
+    });
+  };
+
+  useEffect(() => {
+    checkScroll();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleScrollLeft = (): void => {
     const sc = scroller.current;
@@ -43,16 +52,25 @@ export const Tabs: BaseTabsComponent = (props) => {
       return;
     }
 
-    sc.scrollLeft -= 50;
+    // sc.scrollLeft -= scroll.scrollStep;
+    sc.scrollLeft -= 1033;
+
+    checkScroll();
   };
 
   const handleScrollRight = (): void => {
     const sc = scroller.current;
+
     if (!sc) {
       return;
     }
 
-    sc.scrollLeft += 50;
+    sc.scrollLeft += 1033;
+
+    console.log(scroll.scrollStep);
+    console.log(sc.scrollLeft);
+
+    checkScroll();
   };
 
   return (
@@ -71,11 +89,12 @@ export const Tabs: BaseTabsComponent = (props) => {
       </div>
       {!state.isHiddenRightButton && (
         <div className={cnTabs('ScrollRight')}>
-          <button type="button" className={cnTabs('ScrollButton')} onClick={handleScrollRight}>
+          <button type="button" className={cnTabs('ScrollButton')} onMouseDown={handleScrollRight}>
             <IconArrowRight />
           </button>
         </div>
       )}
+      <span>{scroll.scrollLeft}</span>
     </div>
   );
 };
