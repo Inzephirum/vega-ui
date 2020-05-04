@@ -1,0 +1,77 @@
+.VegaCarousel {
+  display: block;
+
+  width: 100%;
+}
+
+.VegaCarousel__Container {
+  display: flex;
+  align-items: center;
+}
+
+.VegaCarousel__Slide {
+  width: 100%;
+
+  order: 2;
+}
+
+.VegaCarousel__Caption {
+  margin-top: var(--space-2xl);
+
+  text-align: center;
+}
+
+.VegaCarousel__Dots {
+  margin-top: var(--space-3xl);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.VegaCarousel__Dot {
+  --color: var(--color-control-bg-ghost);
+  --color-hover: var(--color-control-bg-ghost-hover);
+  padding: 0;
+
+  box-sizing: border-box;
+  width: 12px;
+  height: 12px;
+
+  cursor: pointer;
+
+  background-color: transparent;
+  border: 2px solid var(--color);
+  border-radius: 50%;
+  -webkit-appearance: none;
+
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  &:hover {
+    border-color: var(--color-hover);
+  }
+
+  &_active {
+    background-color: var(--color);
+    border-color: transparent;
+
+    &:hover {
+      background-color: var(--color-hover);
+      border-color: transparent;
+    }
+  }
+}
+
+.VegaCarousel__Arrow {
+  &_position_left {
+    order: 1;
+  }
+
+  &_position_right {
+    order: 3;
+  }
+}

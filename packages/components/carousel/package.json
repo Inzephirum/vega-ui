@@ -1,0 +1,19 @@
+{
+  "name": "@vega-ui/slider",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es.js",
+  "author": "csssr",
+  "devDependencies": {
+    "@types/react-transition-group": "*"
+  },
+  "peerDependencies": {
+    "@gpn-design/uikit": "^1.0.1",
+    "@vega-ui/button": "*",
+    "@vega-ui/text": "*",
+    "@vega-ui/icons": "*",
+    "react": "^16",
+    "react-transition-group": "^4.3.0"
+  }
+}
