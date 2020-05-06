@@ -17,12 +17,6 @@ module.exports = ({ config }) => {
           transpileOnly: true,
         },
       },
-      {
-        loader: require.resolve('@storybook/addon-storysource/loader'),
-        options: {
-          parser: 'typescript',
-        },
-      },
     ],
   });
 

@@ -120,22 +120,22 @@ function useSwipeScroll({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function scroll(): void {
-    const slider = !sliderRef.current;
-    if (!slider) return;
+  // function scroll(): void {
+  //   const slider = !sliderRef.current;
+  //   if (!slider) return;
 
-    // const x = e.pageX - slider.offsetLeft;
-    const walk = (state.scrollStep - state.scrollLeft) * 3; // scroll-fast
-    const prevScrollLeft = state.scrollLeft;
+  //   // const x = e.pageX - slider.offsetLeft;
+  //   const walk = (state.scrollStep - state.scrollLeft) * 3; // scroll-fast
+  //   const prevScrollLeft = state.scrollLeft;
 
-    slider.scrollLeft = state.scrollLeft - walk;
+  //   slider.scrollLeft = state.scrollLeft - walk;
 
-    velX = slider.scrollLeft - prevScrollLeft;
+  //   velX = slider.scrollLeft - prevScrollLeft;
 
-    if (slider.scrollLeft - prevScrollLeft && !hasSwiped) {
-      setHasSwiped(true);
-    }
-  }
+  //   if (slider.scrollLeft - prevScrollLeft && !hasSwiped) {
+  //     setHasSwiped(true);
+  //   }
+  // }
 
   return {
     hasSwiped,
