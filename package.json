@@ -39,20 +39,7 @@
     }
   },
   "workspaces": [
-    "packages/hooks",
-    "packages/components/avatar",
-    "packages/components/badge",
-    "packages/components/button",
-    "packages/components/checkbox",
-    "packages/components/choice-group",
-    "packages/components/file",
-    "packages/components/icons",
-    "packages/components/radio",
-    "packages/components/switch",
-    "packages/components/text",
-    "packages/components/text-field",
-    "packages/components/user",
-    "packages/components/modal"
+    "packages/hooks"
   ],
   "devDependencies": {
     "@babel/core": "^7.9.0",

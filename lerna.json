@@ -1,5 +1,5 @@
 {
-  "packages": ["packages/hooks", "packages/components/*"],
+  "packages": ["packages/hooks"],
   "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,
