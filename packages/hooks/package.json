@@ -16,7 +16,6 @@
   },
   "publishConfig": {
     "access": "public",
-    "registry": "https://npm.pkg.github.com/"
-  },
-  "gitHead": "29ff26bd19a1aee72a24bdf8db178f7a5769086e"
+    "registry": "https://npm.pkg.github.com/Inzephirum"
+  }
 }
