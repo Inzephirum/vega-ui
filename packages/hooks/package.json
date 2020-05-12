@@ -1,5 +1,5 @@
 {
-  "name": "@vega-ui/hooks",
+  "name": "vega-ui-test-hooks",
   "version": "0.0.3",
   "description": "",
   "main": "dist/index.umd.js",
@@ -18,5 +18,5 @@
     "access": "public",
     "registry": "https://npm.pkg.github.com/"
   },
-  "gitHead": "7979a211c58c07c79348c01bdbcd8659d267079c"
+  "gitHead": "29ff26bd19a1aee72a24bdf8db178f7a5769086e"
 }
