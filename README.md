@@ -41,6 +41,8 @@
   - [Форматирование кода](docs/project-structure.md#Форматирование-кода)
 - [Добавление нового компонента](docs/new-component.md)
   - [Статус и автор](docs/new-component.md#Статус-и-автор)
+- [Инструменты](docs/tools.md)
+  - [Декоратор для Сторибука withMetadata](docs/tools.md#Декоратор-для-Сторибука-withMetadata)
 - [Unit тесты (TBD)](docs/unit-tests.md)
 - [Оформления коммитов](docs/git-flow.md#Правила-оформления-коммитов)
 - [Хуки](packages/hooks)

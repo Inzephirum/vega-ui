@@ -21,8 +21,7 @@
     margin-left: 10px;
   }
 
-  &__status-value,
-  &__author-value {
+  &__value {
     margin-left: 3px;
 
     &_success {
@@ -36,6 +35,12 @@
     &_alert {
       color: #f00;
     }
+  }
+
+  &__description {
+    margin-left: 10px;
+
+    font-style: italic;
   }
 
   &__wrapper {

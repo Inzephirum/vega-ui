@@ -15,6 +15,7 @@ export enum Status {
 type Parameters = {
   status?: Status;
   author?: string;
+  description?: string;
 };
 
 const placeholder = 'Не указан';
@@ -23,10 +24,10 @@ export const withMetadata = makeDecorator({
   name: 'withMetadata',
   parameterName: 'metadata',
   wrapper: (getStory, context, { parameters = {} }) => {
-    const { status = placeholder, author = placeholder } = parameters as Parameters;
+    const { status = placeholder, author = placeholder, description } = parameters as Parameters;
 
-    const statusSuccess = status === 'Approved';
-    const statusWarning = status === 'Deprecated';
+    const statusSuccess = status === Status.Approved;
+    const statusWarning = status === Status.Deprecated;
     const statusAlert = status === placeholder;
     const authorAlert = author === placeholder;
 
@@ -34,9 +35,9 @@ export const withMetadata = makeDecorator({
       <>
         <div className={cnMetadata('panel')}>
           <span className={cnMetadata('status')}>
-            <span className={cnMetadata('status-title')}>Статус:</span>
+            <span className={cnMetadata('title')}>Статус:</span>
             <span
-              className={cnMetadata('status-value', {
+              className={cnMetadata('value', {
                 success: statusSuccess,
                 warning: statusWarning,
                 alert: statusAlert,
@@ -46,9 +47,10 @@ export const withMetadata = makeDecorator({
             </span>
           </span>
           <span className={cnMetadata('author')}>
-            <span className={cnMetadata('author-title')}>Автор:</span>
-            <span className={cnMetadata('author-value', { alert: authorAlert })}>{author}</span>
+            <span className={cnMetadata('title')}>Автор:</span>
+            <span className={cnMetadata('value', { alert: authorAlert })}>{author}</span>
           </span>
+          {description && <span className={cnMetadata('description')}>{description}</span>}
         </div>
         <div className={cnMetadata('wrapper')}>{getStory(context)}</div>
       </>

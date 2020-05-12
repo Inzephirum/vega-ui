@@ -1,25 +1,33 @@
 # Добавление нового компонента
 
-Порядок шаблонных действий для создания нового компонента
+Порядок действий для создания нового компонента.
 
 ...
 
 ## Статус и автор
 
-При добавлении нового компонента необходимо указать его автора (к кому можно обратиться с вопросами по этому компоненту?) и его статус.
+Для нового компонента в Сторибуке необходимо указать его автора и статус.
 
-![pic-1](static/new-component/pic-1.png)
+<img src="static/tools/pic-1.png" width="500">
 
-Статусы: Draft, Approved, Deprecated
+Возможные статусы:<br>
+_Approved_ - компонент прошел проверку<br>
+_Draft_ - компонент не доработан/не прошел проверку<br>
+_Deprecated_ - компонент признан устаревшим и будет удален из библиотеки в следующих мажорных обновлениях<br>
+
 Автор: Имя Фамилия | Компания
+
+### Пример использования
+
+Для добавления указанной информации необходимо воспользоваться методом `addParameters` на уровне истории всего компонента и передать объект со свойством `metadata`. Подробней про декоратор `withMetadata` можно прочитать [тут](tools.md#Декоратор-для-Сторибука-withMetadata).
 
 ```jsx
 import { Status } from '../../../../.storybook/with-metadata';
 
-...
+// ...
 
-storiesOf('ui/Avatar', module)
+storiesOf('ui/Component', module)
   .addDecorator(withKnobs)
-  .addParameters({ metadata: { author: 'Maksim Kononov | CSSSR', status: Status.Approved } })
-  .add('Avatar', () => <Avatar {...defaultKnobs()} />);
+  .addParameters({ metadata: { author: 'Yuri Gagarin | CSSSR', status: Status.Approved } })
+  .add('Component', () => <Component {...defaultKnobs()} />);
 ```

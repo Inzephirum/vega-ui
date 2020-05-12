@@ -3,8 +3,6 @@ import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import { IconUser } from '@vega-ui/icons';
 
-import { Status } from '../../../../.storybook/with-metadata';
-
 import { Badge } from './Badge';
 
 const knobs = (): Record<string, string | boolean> => ({
@@ -18,6 +16,5 @@ const knobs = (): Record<string, string | boolean> => ({
 
 storiesOf('ui/Badge', module)
   .addDecorator(withKnobs)
-  .addParameters({ metadata: { author: 'Maksim Kononov | CSSSR', status: Status.Deprecated } })
   .add('Текстовый', () => <Badge {...knobs()} />)
   .add('С иконкой', () => <Badge {...knobs()} icon={IconUser} />);
