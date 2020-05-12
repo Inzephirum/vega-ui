@@ -1,12 +1,10 @@
-import * as React from 'react';
-import { addDecorator, configure, addParameters } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs';
-import { withPerformance } from 'storybook-addon-performance';
-import { withThemes } from 'storybook-addon-themes';
-
 import { cnTheme } from '@gpn-design/uikit/Theme';
+import { withKnobs } from '@storybook/addon-knobs';
+import { addDecorator, addParameters, configure } from '@storybook/react';
+import { withPerformance } from 'storybook-addon-performance';
 
-import { storybookThemes } from './themes';
+import { getThemes } from './themes';
+import { withMetadata } from './with-metadata';
 
 import '@gpn-design/uikit/__internal__/src/components/Theme/Theme.css';
 import '@gpn-design/uikit/__internal__/src/components/Theme/_color/Theme_color_gpnDefault.css';
@@ -18,6 +16,8 @@ import '@gpn-design/uikit/__internal__/src/components/Theme/_font/theme_font_gpn
 import '@gpn-design/uikit/__internal__/src/components/Theme/_control/Theme_control_gpnDefault.css';
 import '@gpn-design/uikit/__internal__/src/utils/whitepaper/whitepaper.css';
 
+document.documentElement.lang = 'ru';
+
 const themes = cnTheme({
   space: 'gpnDefault',
   size: 'gpnDefault',
@@ -25,57 +25,22 @@ const themes = cnTheme({
   control: 'gpnDefault',
 });
 
-const defaultClassName = `Theme ${themes} Theme_color_gpnDefault`;
+const defaultClassName = `Theme ${themes} Theme_color_gpnDark`;
+document.body.className = defaultClassName;
+document.body.style.margin = '0px';
 
 const modalRoot = document.createElement('div');
 modalRoot.setAttribute('id', 'modalRoot');
-modalRoot.className = defaultClassName;
 document.body.appendChild(modalRoot);
 
-const ThemeDecorator = ({ children, theme = { class: 'Theme_color_gpnDefault' } }) => {
-  const className = `Theme ${themes} ${theme.class}`;
-  document.body.className = className;
-  document.querySelector('#modalRoot').className = className;
-  return <div className={className}>{children}</div>;
-}
-
-addParameters({
-  themes: { list: storybookThemes(), Decorator: ThemeDecorator },
-});
-
+addParameters({ themes: getThemes() });
+addDecorator(withMetadata);
 addDecorator(withKnobs);
 addDecorator(withPerformance);
-addDecorator((story) => {
-  return story();
-});
 
-addDecorator((storyFn) => {
-  window.document.documentElement.lang = 'ru';
+function loadStories(): void {
+  const req = require.context('../packages', true, /.stories\.tsx$/);
 
-  document.body.className = defaultClassName;
-
-  return <div>{storyFn()}</div>;
-});
-
-addDecorator((story) => {
-  const appStyles = {
-    background: 'var(--color-bg-default)',
-    padding: 'var(--space-3xl)',
-    minHeight: '100vh',
-  };
-
-  return (
-    <div id="rootLayout" style={appStyles}>
-      {story()}
-    </div>
-  );
-});
-
-addDecorator(withThemes);
-
-const req = require.context('../packages', true, /.stories\.tsx$/);
-
-function loadStories() {
   req.keys().forEach(req);
 }
 

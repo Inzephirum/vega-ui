@@ -2,6 +2,8 @@ import React from 'react';
 import { select, text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 
+import { Status } from '../../../../.storybook/with-metadata';
+
 import { Avatar } from './Avatar';
 
 const defaultKnobs = (): Record<string, string> => ({
@@ -12,4 +14,5 @@ const defaultKnobs = (): Record<string, string> => ({
 
 storiesOf('ui/Avatar', module)
   .addDecorator(withKnobs)
+  .addParameters({ metadata: { author: 'Maksim Kononov | CSSSR', status: Status.Approved } })
   .add('Avatar', () => <Avatar {...defaultKnobs()} />);
